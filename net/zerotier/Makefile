@@ -82,7 +82,9 @@ endif
 	$(INSTALL_BIN) ./files/etc/init.d/zerotier $(1)/etc/init.d/
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(INSTALL_BIN) ./files/usr/bin/zerotier-fw4 $(1)/usr/bin/
+	$(INSTALL_DIR) $(1)/etc/config
 	$(CP) ./files/etc/config/* $(1)/etc/config/
+	$(INSTALL_DIR) $(1)/etc/hotplug.d
 	$(CP) ./files/etc/hotplug.d/* $(1)/etc/hotplug.d/
 endef
 
