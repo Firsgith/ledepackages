@@ -78,7 +78,12 @@ define Package/zerotier/install
 ifeq ($(CONFIG_ZEROTIER_ENABLE_SELFTEST),y)
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/zerotier-selftest $(1)/usr/bin/
 endif
-	$(CP) ./files/* $(1)/
+	$(INSTALL_DIR) $(1)/etc/init.d
+	$(INSTALL_BIN) ./files/etc/init.d/zerotier $(1)/etc/init.d/
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(INSTALL_BIN) ./files/usr/bin/zerotier-fw4 $(1)/usr/bin/
+	$(CP) ./files/etc/config/* $(1)/etc/config/
+	$(CP) ./files/etc/hotplug.d/* $(1)/etc/hotplug.d/
 endef
 
 $(eval $(call BuildPackage,zerotier))
