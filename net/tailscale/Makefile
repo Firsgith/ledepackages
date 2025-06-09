@@ -51,16 +51,13 @@ define Package/tailscale/description
 endef
 
 define Package/tailscale/conffiles
-/etc/config/tailscale
 /etc/tailscale/
 endef
 
 define Package/tailscale/install
-	$(INSTALL_DIR) $(1)/usr/sbin $(1)/etc/init.d $(1)/etc/config
+	$(INSTALL_DIR) $(1)/usr/sbin
 	$(INSTALL_BIN) $(GO_PKG_BUILD_BIN_DIR)/tailscaled $(1)/usr/sbin
 	$(LN) tailscaled $(1)/usr/sbin/tailscale
-	$(INSTALL_BIN) ./files//tailscale.init $(1)/etc/init.d/tailscale
-	$(INSTALL_DATA) ./files//tailscale.conf $(1)/etc/config/tailscale
 endef
 
 $(eval $(call BuildPackage,tailscale))
