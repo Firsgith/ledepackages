@@ -78,7 +78,11 @@ define Package/zerotier/install
 ifeq ($(CONFIG_ZEROTIER_ENABLE_SELFTEST),y)
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/zerotier-selftest $(1)/usr/bin/
 endif
-	$(CP) ./files/* $(1)/
+	$(INSTALL_BIN) ./files/usr/bin/zerotier-fw4 $(1)/usr/bin/
+	$(INSTALL_BIN) ./files/etc/uci-defaults/81-zt-firewall $(1)/etc/uci-defaults/
+	$(INSTALL_BIN) ./files/etc/init.d/zerotier $(1)/etc/init.d/
+	$(INSTALL_BIN) ./files/etc/hotplug.d/net/30-zerotier $(1)/etc/hotplug.d/net/
+	$(CP) ./files/etc/config/zerotier $(1)/etc/config/
 endef
 
 $(eval $(call BuildPackage,zerotier))
