@@ -80,6 +80,7 @@ ifeq ($(CONFIG_ZEROTIER_ENABLE_SELFTEST),y)
 endif
 	$(INSTALL_DIR) $(1)/etc/init.d
 	$(INSTALL_DIR) $(1)/etc/hotplug.d/net
+	$(INSTALL_DIR) $(1)/etc/config
 	$(INSTALL_BIN) ./files/usr/bin/zerotier-fw4 $(1)/usr/bin/
 	$(INSTALL_BIN) ./files/etc/uci-defaults/81-zt-firewall $(1)/etc/uci-defaults/
 	$(INSTALL_BIN) ./files/etc/init.d/zerotier $(1)/etc/init.d/
